@@ -1,13 +1,12 @@
 const defaultConfig = {
-  page_title: "Thayna", // Título principal
+  page_title: "Thayna",
   inicio_title: "Início",
-  eu_title: "Thay", // Título da aba "eu"
+  eu_title: "Thay",
   jesus_title: "Jesus",
   estudos_title: "Estudos",
   familia_title: "Família",
   amigos_title: "Amigos",
-  gallery_title: "",
-  // Todas as "..._description" foram removidas
+  // gallery_title removido
   background_color: "#e1bee7",
   surface_color: "#ffffff",
   text_color: "#4a148c",
@@ -18,7 +17,7 @@ const defaultConfig = {
 };
 
 const photoEmojis = {
-  eu: ["📸", "🌟", "💫", "✨", "🎨", "🎭", "🎪", "🎬", "📷"], // Emojis para a aba "eu" (Thay)
+  eu: ["📸", "🌟", "💫", "✨", "🎨", "🎭", "🎪", "🎬", "📷"],
   jesus: ["✝️", "🙏", "⛪", "📖", "🕊️", "💒", "🌅", "🌄", "⭐"],
   estudos: ["📚", "📖", "✏️", "📝", "🎓", "🏫", "💡", "🔬", "🧪"],
   familia: ["👨‍👩‍👧‍👦", "❤️", "🏠", "🎂", "🎉", "🎈", "🎁", "🌸", "🌺"],
@@ -29,15 +28,17 @@ const photoEmojis = {
 function createPhotoPlaceholders(containerId, emojiSet) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
-  for (let i = 0; i < 9; i++) {
+  // MUDANÇA: Alterado de 9 para 12
+  for (let i = 0; i < 12; i++) {
     const placeholder = document.createElement('div');
     placeholder.className = 'photo-placeholder';
-    placeholder.textContent = emojiSet[i];
+    // Usei o módulo (%) para repetir os emojis caso a lista seja menor que 12
+    placeholder.textContent = emojiSet[i % emojiSet.length];
     container.appendChild(placeholder);
   }
 }
 
-createPhotoPlaceholders('eu-photos', photoEmojis.eu); // Criando fotos para a aba "eu"
+createPhotoPlaceholders('eu-photos', photoEmojis.eu);
 createPhotoPlaceholders('jesus-photos', photoEmojis.jesus);
 createPhotoPlaceholders('estudos-photos', photoEmojis.estudos);
 createPhotoPlaceholders('familia-photos', photoEmojis.familia);
@@ -109,7 +110,7 @@ async function onConfigChange(config) {
   const tabButtonElements = document.querySelectorAll('.tab-button');
   const tabTitles = [
     config.inicio_title || defaultConfig.inicio_title,
-    config.eu_title || defaultConfig.eu_title, // Título da aba "eu"
+    config.eu_title || defaultConfig.eu_title,
     config.jesus_title || defaultConfig.jesus_title,
     config.estudos_title || defaultConfig.estudos_title,
     config.familia_title || defaultConfig.familia_title,
@@ -147,14 +148,8 @@ async function onConfigChange(config) {
     content.style.background = surfaceColor;
   });
 
-  // Linhas que atualizavam as descrições foram removidas
+  // Bloco de código do galleryTitle removido
   
-  const galleryTitle = document.getElementById('gallery-title');
-  galleryTitle.textContent = config.gallery_title || defaultConfig.gallery_title;
-  galleryTitle.style.fontSize = `${baseSize * 2.25}px`;
-  galleryTitle.style.color = textColor;
-  galleryTitle.style.fontFamily = fontFamily;
-
   document.querySelector('.gallery-section').style.background = surfaceColor;
 }
 
@@ -182,4 +177,49 @@ if (window.elementSdk) {
           get: () => config.text_color || defaultConfig.text_color,
           set: (value) => {
             config.text_color = value;
-            window.
+            window.elementSdk.setConfig({ text_color: value });
+          }
+        },
+        {
+          get: () => config.primary_action_color || defaultConfig.primary_action_color,
+          set: (value) => {
+            config.primary_action_color = value;
+            window.elementSdk.setConfig({ primary_action_color: value });
+          }
+        },
+        {
+          get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+          set: (value) => {
+            config.secondary_action_color = value;
+            window.elementSdk.setConfig({ secondary_action_color: value });
+          }
+        }
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (value) => {
+          config.font_family = value;
+          window.elementSdk.setConfig({ font_family: value });
+        }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (value) => {
+          config.font_size = value;
+          window.elementSdk.setConfig({ font_size: value });
+        }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ["page_title", config.page_title || defaultConfig.page_title],
+      ["inicio_title", config.inicio_title || defaultConfig.inicio_title],
+      ["eu_title", config.eu_title || defaultConfig.eu_title],
+      ["jesus_title", config.jesus_title || defaultConfig.jesus_title],
+      ["estudos_title", config.estudos_title || defaultConfig.estudos_title],
+      ["familia_title", config.familia_title || defaultConfig.familia_title],
+      ["amigos_title", config.amigos_title || defaultConfig.amigos_title]
+      // gallery_title removido do map
+    ])
+  });
+}
