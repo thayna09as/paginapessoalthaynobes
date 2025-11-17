@@ -1,17 +1,13 @@
 const defaultConfig = {
-  page_title: "Thayna",
+  page_title: "Thayna", // Título principal
   inicio_title: "Início",
-  eu_title: "Thay",
-  eu_description: "",
+  eu_title: "Thay", // Título da aba "eu"
   jesus_title: "Jesus",
-  jesus_description: "",
   estudos_title: "Estudos",
-  estudos_description: "",
   familia_title: "Família",
-  familia_description: "",
   amigos_title: "Amigos",
-  amigos_description: "",
   gallery_title: "",
+  // Todas as "..._description" foram removidas
   background_color: "#e1bee7",
   surface_color: "#ffffff",
   text_color: "#4a148c",
@@ -22,7 +18,7 @@ const defaultConfig = {
 };
 
 const photoEmojis = {
-  eu: ["📸", "🌟", "💫", "✨", "🎨", "🎭", "🎪", "🎬", "📷"],
+  eu: ["📸", "🌟", "💫", "✨", "🎨", "🎭", "🎪", "🎬", "📷"], // Emojis para a aba "eu" (Thay)
   jesus: ["✝️", "🙏", "⛪", "📖", "🕊️", "💒", "🌅", "🌄", "⭐"],
   estudos: ["📚", "📖", "✏️", "📝", "🎓", "🏫", "💡", "🔬", "🧪"],
   familia: ["👨‍👩‍👧‍👦", "❤️", "🏠", "🎂", "🎉", "🎈", "🎁", "🌸", "🌺"],
@@ -41,7 +37,7 @@ function createPhotoPlaceholders(containerId, emojiSet) {
   }
 }
 
-createPhotoPlaceholders('eu-photos', photoEmojis.eu);
+createPhotoPlaceholders('eu-photos', photoEmojis.eu); // Criando fotos para a aba "eu"
 createPhotoPlaceholders('jesus-photos', photoEmojis.jesus);
 createPhotoPlaceholders('estudos-photos', photoEmojis.estudos);
 createPhotoPlaceholders('familia-photos', photoEmojis.familia);
@@ -113,7 +109,7 @@ async function onConfigChange(config) {
   const tabButtonElements = document.querySelectorAll('.tab-button');
   const tabTitles = [
     config.inicio_title || defaultConfig.inicio_title,
-    config.eu_title || defaultConfig.eu_title,
+    config.eu_title || defaultConfig.eu_title, // Título da aba "eu"
     config.jesus_title || defaultConfig.jesus_title,
     config.estudos_title || defaultConfig.estudos_title,
     config.familia_title || defaultConfig.familia_title,
@@ -151,19 +147,8 @@ async function onConfigChange(config) {
     content.style.background = surfaceColor;
   });
 
-  document.getElementById('eu-description').textContent = config.eu_description || defaultConfig.eu_description;
-  document.getElementById('jesus-description').textContent = config.jesus_description || defaultConfig.jesus_description;
-  document.getElementById('estudos-description').textContent = config.estudos_description || defaultConfig.estudos_description;
-  document.getElementById('familia-description').textContent = config.familia_description || defaultConfig.familia_description;
-  document.getElementById('amigos-description').textContent = config.amigos_description || defaultConfig.amigos_description;
-
-  const descriptions = document.querySelectorAll('.tab-description');
-  descriptions.forEach(desc => {
-    desc.style.fontSize = `${baseSize * 1.25}px`;
-    desc.style.color = textColor;
-    desc.style.fontFamily = fontFamily;
-  });
-
+  // Linhas que atualizavam as descrições foram removidas
+  
   const galleryTitle = document.getElementById('gallery-title');
   galleryTitle.textContent = config.gallery_title || defaultConfig.gallery_title;
   galleryTitle.style.fontSize = `${baseSize * 2.25}px`;
@@ -197,54 +182,4 @@ if (window.elementSdk) {
           get: () => config.text_color || defaultConfig.text_color,
           set: (value) => {
             config.text_color = value;
-            window.elementSdk.setConfig({ text_color: value });
-          }
-        },
-        {
-          get: () => config.primary_action_color || defaultConfig.primary_action_color,
-          set: (value) => {
-            config.primary_action_color = value;
-            window.elementSdk.setConfig({ primary_action_color: value });
-          }
-        },
-        {
-          get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
-          set: (value) => {
-            config.secondary_action_color = value;
-            window.elementSdk.setConfig({ secondary_action_color: value });
-          }
-        }
-      ],
-      borderables: [],
-      fontEditable: {
-        get: () => config.font_family || defaultConfig.font_family,
-        set: (value) => {
-          config.font_family = value;
-          window.elementSdk.setConfig({ font_family: value });
-        }
-      },
-      fontSizeable: {
-        get: () => config.font_size || defaultConfig.font_size,
-        set: (value) => {
-          config.font_size = value;
-          window.elementSdk.setConfig({ font_size: value });
-        }
-      }
-    }),
-    mapToEditPanelValues: (config) => new Map([
-      ["page_title", config.page_title || defaultConfig.page_title],
-      ["inicio_title", config.inicio_title || defaultConfig.inicio_title],
-      ["eu_title", config.eu_title || defaultConfig.eu_title],
-      ["eu_description", config.eu_description || defaultConfig.eu_description],
-      ["jesus_title", config.jesus_title || defaultConfig.jesus_title],
-      ["jesus_description", config.jesus_description || defaultConfig.jesus_description],
-      ["estudos_title", config.estudos_title || defaultConfig.estudos_title],
-      ["estudos_description", config.estudos_description || defaultConfig.estudos_description],
-      ["familia_title", config.familia_title || defaultConfig.familia_title],
-      ["familia_description", config.familia_description || defaultConfig.familia_description],
-      ["amigos_title", config.amigos_title || defaultConfig.amigos_title],
-      ["amigos_description", config.amigos_description || defaultConfig.amigos_description],
-      ["gallery_title", config.gallery_title || defaultConfig.gallery_title]
-    ])
-  });
-}
+            window.

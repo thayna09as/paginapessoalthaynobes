@@ -144,14 +144,7 @@ body {
   }
 }
 
-.tab-description {
-  font-size: 20px;
-  color: #4a148c;
-  margin-bottom: 30px;
-  line-height: 1.6;
-  text-align: center;
-  font-style: italic;
-}
+/* Bloco .tab-description removido */
 
 .photo-grid {
   display: grid;
@@ -182,7 +175,7 @@ body {
   background: #ffffff;
   border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0,0,a,0.1);
 }
 
 .gallery-title {
