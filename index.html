@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Pessoal</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f3f7;
+      color: #2d1b3d;
+      min-height: 100%;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 300;
+      margin: 0;
+      color: #6b46c1;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      background: transparent;
+      border: 2px solid #9f7aea;
+      color: #6b46c1;
+      padding: 12px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 25px;
+      font-weight: 500;
+    }
+
+    .tab-button:hover {
+      background: #9f7aea;
+      color: white;
+    }
+
+    .tab-button.active {
+      background: #6b46c1;
+      color: white;
+      border-color: #6b46c1;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 300;
+      color: #6b46c1;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .photo-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(107, 70, 193, 0.2);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, #e9d5ff 0%, #c4b5fd 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    .photo-description {
+      padding: 20px;
+      min-height: 100px;
+    }
+
+    .photo-description h3 {
+      margin: 0 0 10px 0;
+      color: #6b46c1;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .photo-description p {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <header>
+    <h1 id="site-title">Minha Página Pessoal</h1>
+   </header>
+   <div class="tabs"><button class="tab-button active" onclick="openTab('eu')">Eu</button> <button class="tab-button" onclick="openTab('estudos')">Estudos</button> <button class="tab-button" onclick="openTab('familia')">Família</button> <button class="tab-button" onclick="openTab('jesus')">Jesus</button> <button class="tab-button" onclick="openTab('galeria')">Galeria</button>
+   </div>
+   <div id="eu" class="tab-content active">
+    <h2 class="section-title" id="eu-title">Sobre Mim</h2>
+    <div class="photo-grid">
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📸
+      </div>
+      <div class="photo-description">
+       <h3>Foto 1</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📸
+      </div>
+      <div class="photo-description">
+       <h3>Foto 2</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📸
+      </div>
+      <div class="photo-description">
+       <h3>Foto 3</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📸
+      </div>
+      <div class="photo-description">
+       <h3>Foto 4</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📸
+      </div>
+      <div class="photo-description">
+       <h3>Foto 5</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div id="estudos" class="tab-content">
+    <h2 class="section-title" id="estudos-title">Meus Estudos</h2>
+    <div class="photo-grid">
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📚
+      </div>
+      <div class="photo-description">
+       <h3>Foto 1</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📚
+      </div>
+      <div class="photo-description">
+       <h3>Foto 2</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📚
+      </div>
+      <div class="photo-description">
+       <h3>Foto 3</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📚
+      </div>
+      <div class="photo-description">
+       <h3>Foto 4</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       📚
+      </div>
+      <div class="photo-description">
+       <h3>Foto 5</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div id="familia" class="tab-content">
+    <h2 class="section-title" id="familia-title">Minha Família</h2>
+    <div class="photo-grid">
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       👨‍👩‍👧‍👦
+      </div>
+      <div class="photo-description">
+       <h3>Foto 1</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       👨‍👩‍👧‍👦
+      </div>
+      <div class="photo-description">
+       <h3>Foto 2</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       👨‍👩‍👧‍👦
+      </div>
+      <div class="photo-description">
+       <h3>Foto 3</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       👨‍👩‍👧‍👦
+      </div>
+      <div class="photo-description">
+       <h3>Foto 4</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       👨‍👩‍👧‍👦
+      </div>
+      <div class="photo-description">
+       <h3>Foto 5</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div id="jesus" class="tab-content">
+    <h2 class="section-title" id="jesus-title">Minha Fé</h2>
+    <div class="photo-grid">
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       ✝️
+      </div>
+      <div class="photo-description">
+       <h3>Foto 1</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       ✝️
+      </div>
+      <div class="photo-description">
+       <h3>Foto 2</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       ✝️
+      </div>
+      <div class="photo-description">
+       <h3>Foto 3</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       ✝️
+      </div>
+      <div class="photo-description">
+       <h3>Foto 4</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+     <div class="photo-item">
+      <div class="photo-placeholder">
+       ✝️
+      </div>
+      <div class="photo-description">
+       <h3>Foto 5</h3>
+       <p>Adicione sua descrição aqui</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div id="galeria" class="tab-content">
+    <h2 class="section-title" id="galeria-title">Galeria de Fotos</h2>
+    <div class="gallery-grid">
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+     <div class="gallery-item">
+      <div class="gallery-placeholder">
+       🖼️
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      site_title: "Minha Página Pessoal",
+      eu_title: "Sobre Mim",
+      estudos_title: "Meus Estudos",
+      familia_title: "Minha Família",
+      jesus_title: "Minha Fé",
+      galeria_title: "Galeria de Fotos",
+      background_color: "#f5f3f7",
+      primary_color: "#6b46c1",
+      secondary_color: "#9f7aea",
+      text_color: "#2d1b3d",
+      card_color: "#ffffff"
+    };
+
+    function openTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-button');
+      
+      tabs.forEach(tab => tab.classList.remove('active'));
+      buttons.forEach(button => button.classList.remove('active'));
+      
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    async function onConfigChange(config) {
+      document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
+      document.getElementById('eu-title').textContent = config.eu_title || defaultConfig.eu_title;
+      document.getElementById('estudos-title').textContent = config.estudos_title || defaultConfig.estudos_title;
+      document.getElementById('familia-title').textContent = config.familia_title || defaultConfig.familia_title;
+      document.getElementById('jesus-title').textContent = config.jesus_title || defaultConfig.jesus_title;
+      document.getElementById('galeria-title').textContent = config.galeria_title || defaultConfig.galeria_title;
+
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const cardColor = config.card_color || defaultConfig.card_color;
+
+      document.body.style.background = backgroundColor;
+      document.body.style.color = textColor;
+      
+      document.querySelector('h1').style.color = primaryColor;
+      document.querySelectorAll('.section-title').forEach(el => el.style.color = primaryColor);
+      
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.style.borderColor = secondaryColor;
+        button.style.color = primaryColor;
+      });
+      
+      document.querySelectorAll('.tab-button.active').forEach(button => {
+        button.style.background = primaryColor;
+        button.style.borderColor = primaryColor;
+        button.style.color = 'white';
+      });
+
+      document.querySelectorAll('.photo-item, .gallery-item').forEach(item => {
+        item.style.background = cardColor;
+      });
+
+      document.querySelectorAll('.photo-description h3').forEach(h3 => {
+        h3.style.color = primaryColor;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => {
+              config.card_color = value;
+              window.elementSdk.setConfig({ card_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["site_title", config.site_title || defaultConfig.site_title],
+        ["eu_title", config.eu_title || defaultConfig.eu_title],
+        ["estudos_title", config.estudos_title || defaultConfig.estudos_title],
+        ["familia_title", config.familia_title || defaultConfig.familia_title],
+        ["jesus_title", config.jesus_title || defaultConfig.jesus_title],
+        ["galeria_title", config.galeria_title || defaultConfig.galeria_title]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99fffd08956f324e',t:'MTc2MzM5MDQ4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

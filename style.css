@@ -1,0 +1,141 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f3f7;
+  color: #2d1b3d;
+  min-height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 300;
+  margin: 0;
+  color: #6b46c1;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  background: transparent;
+  border: 2px solid #9f7aea;
+  color: #6b46c1;
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  font-weight: 500;
+}
+
+.tab-button:hover {
+  background: #9f7aea;
+  color: white;
+}
+
+.tab-button.active {
+  background: #6b46c1;
+  color: white;
+  border-color: #6b46c1;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 300;
+  color: #6b46c1;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.photo-item {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(107, 70, 193, 0.2);
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, #e9d5ff 0%, #c4b5fd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.photo-description {
+  padding: 20px;
+  min-height: 100px;
+}
+
+.photo-description h3 {
+  margin: 0 0 10px 0;
+  color: #6b46c1;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.photo-description p {
+  margin: 0;
+  color: #666;
+  font-size
